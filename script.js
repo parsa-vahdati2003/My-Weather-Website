@@ -282,7 +282,7 @@ async function getWeather(cityName) {
 
         {
           title: "WIND",
-          icon: "/assets/icon/wind.png",
+          icon: "My-Weather-Website/assets/icon/wind.png",
           value: `${wind} m/s`,
         },
 
