@@ -270,37 +270,37 @@ async function getWeather(cityName) {
       const summaryItems = [
         {
           title: "FEELS LIKE",
-          icon: "./assets/icons/thermometer.png",
+          icon: "./assets/icon/thermometer.png",
           value: `${displayedFeelsLike}°`,
         },
 
         {
           title: "HUMIDITY",
-          icon: "./assets/icons/humidity.png",
+          icon: "./assets/icon/humidity.png",
           value: `${humidity}%`,
         },
 
         {
           title: "WIND",
-          icon: "./assets/icons/wind.png",
+          icon: "./assets/icon/wind.png",
           value: `${wind} m/s`,
         },
 
         {
           title: "PRESSURE",
-          icon: "./assets/icons/pressure.png",
+          icon: "./assets/icon/pressure.png",
           value: `${pressure} hPa`,
         },
 
         {
           title: "SUNRISE",
-          icon: "./assets/icons/sunrise.png",
+          icon: "./assets/icon/sunrise.png",
           value: sunrise,
         },
 
         {
           title: "SUNSET",
-          icon: "./assets/icons/sunset.png",
+          icon: "./assets/icon/sunset.png",
           value: sunset,
         },
       ];
