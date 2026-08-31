@@ -584,7 +584,7 @@ function templateSummary(item) {
 
         <img
           class="size-5"
-          src="assets/icon/${item.icon}"
+          src="${item.icon}"
           alt="${item.title}"
         />
 
