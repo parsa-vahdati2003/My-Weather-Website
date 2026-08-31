@@ -2,6 +2,12 @@ import axios from "axios";
 
 console.log("hi");
 
+import thermometerIcon from "./assets/icon/thermometer.png";
+import humidityIcon from "./assets/icon/humidity.png";
+import windIcon from "./assets/icon/wind.png";
+import pressureIcon from "./assets/icon/pressure.png";
+import sunriseIcon from "./assets/icon/sunrise.png";
+import sunsetIcon from "./assets/icon/sunset.png";
 // ========================================
 // SELECTING ELEMENTS
 // ========================================
@@ -270,39 +276,14 @@ async function getWeather(cityName) {
       const summaryItems = [
         {
           title: "FEELS LIKE",
-          icon: "/assets/icon/thermometer.png",
+          icon: thermometerIcon,
           value: `${displayedFeelsLike}°`,
         },
-
-        {
-          title: "HUMIDITY",
-          icon: "/assets/icon/humidity.png",
-          value: `${humidity}%`,
-        },
-
-        {
-          title: "WIND",
-          icon: "/assets/icon/wind.png",
-          value: `${wind} m/s`,
-        },
-
-        {
-          title: "PRESSURE",
-          icon: "/assets/icon/pressure.png",
-          value: `${pressure} hPa`,
-        },
-
-        {
-          title: "SUNRISE",
-          icon: "/assets/icon/sunrise.png",
-          value: sunrise,
-        },
-
-        {
-          title: "SUNSET",
-          icon: "/assets/icon/sunset.png",
-          value: sunset,
-        },
+        { title: "HUMIDITY", icon: humidityIcon, value: `${humidity}%` },
+        { title: "WIND", icon: windIcon, value: `${wind} m/s` },
+        { title: "PRESSURE", icon: pressureIcon, value: `${pressure} hPa` },
+        { title: "SUNRISE", icon: sunriseIcon, value: sunrise },
+        { title: "SUNSET", icon: sunsetIcon, value: sunset },
       ];
 
       summeryWeather.innerHTML = "";
