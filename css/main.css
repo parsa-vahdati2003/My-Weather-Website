@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap");
+@import "tailwindcss";
+
+
+
+/* font */
+
+@theme {
+  --color-background: #080c24;
+  --color-background-hourlyAnd7Day: rgba(255, 255, 255, 0.02);
+  --color-foreground: #e2e8f8;
+
+  --color-card: #101535;
+  --color-card-foreground: #e2e8f8;
+
+  --color-primary: #00d4ff;
+  --color-primary-foreground: #080c24;
+
+  --color-secondary: #1a2050;
+  --color-secondary-foreground: #e2e8f8;
+
+  --color-muted: #161d42;
+  --color-muted-foreground: #8899cc;
+
+  --color-accent: #7c3aed;
+  --color-accent-foreground: #ffffff;
+
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border2: rgba(0, 212, 255, 0.3);
+  --color-bg-Input: rgba(0, 212, 255, 0.04);
+
+  --color-btnFC-active: rgba(0, 212, 255, 0.15);
+
+  --color-t-active: rgba(0, 212, 255);
+  --color-t-percent: rgb(96, 165, 250);
+
+  /* Fonts */
+  --font-outfit: "Outfit", sans-serif;
+  --font-jetbrains: "JetBrains Mono", monospace;
+}
+body {
+  font-family: "Outfit", sans-serif;
+}
+
+
+
+.active {
+  background: rgba(0, 212, 255, 0.15);
+  color: rgba(0, 212, 255);
+}
+
+.forecast {
+  opacity: 0;
+  transform: translateY(12px);
+  visibility: hidden;
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    visibility 0.35s;
+}
+
+.forecast.active-forecast {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}

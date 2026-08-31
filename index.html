@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wether webSite</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script type="module" src="script.js"></script>
+  </head>
+  <div class="bg-background">
+    <div class="relative z-10 max-w-7xl mx-auto px-10 py-9">
+      <div class="flex items-center justify-between mb-10 gap-6 flex-wrap">
+        <div class="flex flex-col gap-1">
+          <span
+            class="text-sm text-muted-foreground uppercase tracking-widest font-jetbrains"
+            >WEATHER.SYS</span
+          >
+          <p id="name-country" class="text-2xl font-semibold text-white">
+            Rasht, Gilan Province
+          </p>
+          <time
+            id="date-time"
+            datetime="2026-07-10T12:44:00-07:00"
+            class="text-sm text-muted-foreground title-case"
+          >
+            Thursday, July 10, 2026 · 12:44 PM PDT
+          </time>
+        </div>
+
+        <div class="relative flex-1 min-w-55 max-w-sm group flex items-center gap-2">
+          <button
+            class="flex border border-border px-4 py-3 rounded-2xl gap-2 bg-bg-Input"
+          >
+            <label for="city-input" aria-label="searh-box"></label>
+            <img src="assets/icon/search.svg" alt="search" />
+            <input
+              id="city-input"
+              placeholder="Search for a city..."
+              type="text"
+              class="flex-1 bg-transparent outline-none text-white placeholder:text-white/40 text-sm font-medium "
+            />
+           <button type="submit" id="search-city" class="py-3 px-4 flex-1 bg-bg-Input rounded-2xl outline-none text-white placeholder:text-white/40 text-sm font-medium border border-border hover:bg-bg-Input/50">Enter</button>
+          </div>
+
+             <div class="flex items-center gap-2 p-1 rounded-xl bg-bg-Input">
+          <button
+            id="fahrenheit"
+            type="button"
+            class="px-4 py-2 rounded-lg text-sm font-bold transition-all duration-300 text-muted-foreground"
+          >
+            F°
+          </button>
+
+          <button
+            id="celsius"
+            type="button"
+            class="px-4 py-2 rounded-lg text-sm font-bold transition-all duration-300 text-muted-foreground"
+          >
+            C°
+          </button>
+        </div>
+        </div>
+
+     
+      </header>
+
+      <section
+        id="weather-moment"
+        class="flex justify-between rounded-3xl p-8 mb-6 relative overflow-hidden shadow-2xl transition-all bg-background"
+        style="
+          background: linear-gradient(
+            135deg,
+            rgba(0, 212, 255, 0.08) 0%,
+            rgba(124, 58, 237, 0.05) 100%
+          );
+          border: 1px solid rgba(0, 212, 255, 0.15);
+          backdrop-filter: blur(16px);
+        "
+      >
+        <section
+          class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center relative z-10"
+        >
+          <div class="flex items-center gap-10 mb-4">
+            <div>
+              <img
+                id="weather-icon-top"
+                src="assets/icon/cloudy.png"
+                class="size-30 drop-shadow-2xl"
+              />
+            </div>
+
+            <div>
+              <p
+                id="tepm-now"
+                class="font-bold mb-2 tracking-tighter bg-clip-text text-transparent font-mono text-8xl bg-linear-to-b from-white to-indigo-300"
+              >
+                62°
+              </p>
+
+              <p
+                id="weather-now"
+                class="text-xl font-medium tracking-wide text-primary"
+              >
+                Partly Cloudy
+              </p>
+              <p class="mt-2 text-muted-foreground">
+                <span id="high-temp">H:67°</span>
+                <span class="mx-2 opacity-30">|</span>
+                <span id="low-temp">L:52°</span>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="summery-weather"
+          class="grid grid-cols-2 sm:grid-cols-3 gap-3"
+        >
+        
+        </section>
+      </section>
+
+      <div
+        class="flex items-center gap-2 p-2.5 rounded-xl bg-bg-Input max-w-max mb-6"
+      >
+        <button
+          id="hour-show"
+          type="button"
+          class="px-4 py-2 rounded-lg text-sm font-bold transition-all duration-300 text-muted-foreground"
+        >
+          Hourly(C°)
+        </button>
+
+        <button
+          id="five-Day-show"
+          type="button"
+          class="px-4 py-2 rounded-lg text-sm font-bold transition-all duration-300 text-muted-foreground"
+        >
+          5-Day(C°)
+        </button>
+      </div>
+
+      <section
+        id="hourly-container"
+        class="forecast active-forecast rounded-3xl p-6 transition-all border border-solid border-border bg-background-hourlyAnd7Day backdrop-blur-md"
+      >
+        <div
+          id="hourly-fetch"
+          class="flex overflow-x-auto gap-4 py-3"
+          style="scrollbar-width: none"
+        >
+          <!-- <div
+            style="box-shadow: rgba(0, 212, 255, 0.15) 0px 8px 24px"
+            class="border border-solid border-border2 bg-btnFC-active flex-none flex flex-col items-center gap-3 rounded-2xl px-5 py-5 transition-all hover:-translate-y-1 hover:shadow-lg cursor-default min-w-21"
+          >
+            <span
+              id="hour-now"
+              class="text-base font-semibold font-jetbrains text-t-active tracking-wider"
+              >NOW</span
+            >
+            <img
+              id="hour-now-icon"
+              src="assets/icon/cloudy.png"
+              alt="weather-icon"
+              class="size-9"
+            />
+            <span
+              id="hour-now-temp"
+              class="font-bold text-white text-lg font-jetbrains"
+              >62°</span
+            >
+            <span
+              id="hour-now-rain"
+              class="text-xs font-medium font-jetbrains text-t-percent"
+              >10%</span
+            >
+          </div>
+
+          <div
+            class="bg-bg-Input shadow-none border border-solid border-border min-w-21 flex-none flex flex-col items-center gap-3 rounded-2xl px-5 py-5 transition-all hover:-translate-y-1 hover:shadow-lg hover:bg-white/10 cursor-default"
+          >
+            <span
+              class="text-base font-semibold font-jetbrains text-muted-foreground tracking-wider"
+              >1PM</span
+            >
+            <img
+              src="assets/icon/cloudy.png"
+              alt="weather-icon"
+              class="size-9"
+            />
+            <span class="font-bold text-white text-lg font-jetbrains">64°</span>
+            <span class="text-xs font-medium font-jetbrains text-t-percent"
+              >5%</span
+            >
+          </div> -->
+        </div>
+      </section>
+
+      <section
+        id="five-day-container"
+        class="forecast hidden rounded-3xl overflow-hidden border border-solid border-border bg-background-hourlyAnd7Day backdrop-blur-md"
+      >
+        
+      </section>
+    </div>
+  </div>
+</div>
