@@ -83,16 +83,6 @@ npm install
 
 Then open the project with your preferred development environment.
 
-## 🔑 API Key
-
-This project uses an **OpenWeather API key**.
-
-For security, do not expose your personal API key in a public repository. Store sensitive credentials using environment variables or your deployment platform's environment-variable settings.
-
-## 📸 Preview
-
-The application provides a clean and responsive interface for searching cities and viewing their weather information.
-
 ## 🚀 Deployment
 
 The project is deployed using **Vercel**.
@@ -104,6 +94,6 @@ The project is deployed using **Vercel**.
 * [OpenWeather API](https://openweathermap.org/api)
 * [OpenWeather Geocoding API](https://openweathermap.org/api/geocoding-api)
 
-## 👨‍💻 Author
+## 👨‍💻 Author : Parsa Vahdati 
 
 Developed as a front-end web development project using JavaScript and REST APIs.
