@@ -35,7 +35,6 @@ const hourlyContainer = document.querySelector("#hourly-container");
 const hourlyContainerFetch = document.querySelector("#hourly-fetch");
 
 const cityInput = document.querySelector("#city-input");
-const searchCityBtn = document.querySelector("#search-city");
 
 // ========================================
 // TEMPERATURE UNIT
@@ -513,20 +512,6 @@ async function getWeather(cityName) {
 }
 
 // ========================================
-// SEARCH CITY
-// ========================================
-
-searchCityBtn.addEventListener("click", () => {
-  const cityName = cityInput.value.trim();
-
-  if (!cityName) {
-    return;
-  }
-
-  getWeather(cityName);
-});
-
-// ========================================
 // ENTER KEY
 // ========================================
 
@@ -555,36 +540,20 @@ getWeather("New York");
 function templateSummary(item) {
   return `
     <div
-      class="w-34 backdrop-blur-md rounded-2xl p-4
+      class="w-full backdrop-blur-md rounded-2xl p-3 sm:p-4 lg:p-2.5 md:flex md:flex-col md:items-center md:justify-center 
       transition-all hover:scale-[1.02]
       hover:bg-white/10 bg-bg-Input
       border border-solid border-border"
     >
-
-      <div class="flex items-center gap-1.5 mb-2">
-
-        <img
-          class="size-5"
-          src="${item.icon}"
-          alt="${item.title}"
-        />
-
-        <span
-          class="font-jetbrains text-xs
-          text-muted-foreground tracking-wide"
-        >
+      <div class="flex items-center gap-1.5 mb-2 lg:mb-1 md:flex-col md:items-center md:justify-center">
+        <img class="size-5 lg:size-4" src="${item.icon}" alt="${item.title}" />
+        <span class="font-jetbrains text-[10px] text-muted-foreground tracking-wide w-max">
           ${item.title}
         </span>
-
       </div>
-
-      <p
-        class="font-semibold text-white
-        text-lg font-jetbrains"
-      >
+      <p class="font-semibold text-white text-base sm:text-lg lg:text-base font-jetbrains">
         ${item.value}
       </p>
-
     </div>
   `;
 }
@@ -592,11 +561,11 @@ function templateSummary(item) {
 // ========================================
 // 5-DAY TEMPLATE
 // ========================================
-
 function templateFiveDay(item) {
   return `
     <div
-      class="flex items-center gap-4 px-8 py-5
+      class="flex items-center gap-2 md:gap-4
+      px-3 py-3 md:px-8 md:py-5
       transition-all cursor-default
       border-b border-solid border-bg-Input
       bg-bg-Input"
@@ -604,17 +573,17 @@ function templateFiveDay(item) {
 
       <!-- DAY / DATE -->
 
-      <div class="w-16">
+      <div class="w-10 md:w-16 shrink-0">
 
         <p
-          class="font-bold text-base tracking-wide
+          class="font-bold text-sm md:text-base tracking-wide
           font-jetbrains text-t-active"
         >
           ${item.day}
         </p>
 
         <p
-          class="font-jetbrains text-xs
+          class="font-jetbrains text-[10px] md:text-xs
           text-muted-foreground"
         >
           ${item.monthDay}
@@ -627,13 +596,14 @@ function templateFiveDay(item) {
       <img
         src="https://openweathermap.org/img/wn/${item.icon}@2x.png"
         alt="icon-weather"
-        class="size-9"
+        class="size-7 md:size-9 shrink-0"
       />
 
       <!-- DESCRIPTION -->
 
       <p
-        class="flex-1 text-base font-medium
+        class="flex-1 min-w-0 truncate
+        text-xs md:text-base font-medium
         text-muted-foreground"
       >
         ${item.description}
@@ -642,8 +612,8 @@ function templateFiveDay(item) {
       <!-- RAIN -->
 
       <span
-        class="text-xs px-2.5 py-1 rounded-full
-        font-medium font-jetbrains
+        class="hidden mm:inline-block text-xs px-2.5 py-1 rounded-full
+        font-medium font-jetbrains shrink-0
         bg-t-percent/15 text-t-percent"
       >
         ${item.rain}%
@@ -652,11 +622,11 @@ function templateFiveDay(item) {
       <!-- MIN / MAX -->
 
       <div
-        class="flex items-center gap-4 ml-auto"
+        class="flex items-center gap-2 md:gap-4 ml-auto shrink-0"
       >
 
         <span
-          class="text-sm w-8 text-right
+          class="text-xs md:text-sm w-6 md:w-8 text-right
           font-medium font-jetbrains
           text-muted-foreground"
         >
@@ -664,7 +634,8 @@ function templateFiveDay(item) {
         </span>
 
         <div
-          class="relative h-1.5 w-24
+          class="hidden md:block relative h-1.5
+          w-24
           bg-white/10 rounded-full overflow-hidden"
         >
 
@@ -678,7 +649,7 @@ function templateFiveDay(item) {
         </div>
 
         <span
-          class="text-sm w-8 font-bold
+          class="text-xs md:text-sm w-6 md:w-8 font-bold
           text-white font-jetbrains"
         >
           ${item.maxTemp}°
@@ -703,12 +674,12 @@ function templateHourly(item) {
         flex-none flex flex-col items-center
         gap-3 rounded-2xl px-5 py-5
         transition-all hover:-translate-y-1
-        hover:shadow-lg cursor-default min-w-21
+        hover:shadow-lg cursor-default w-full min-w-0
       "
     >
 
       <span
-        class="
+        class=" text-center md:text-start
           text-base font-semibold
           font-jetbrains text-t-active
           tracking-wider
